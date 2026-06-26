@@ -22,14 +22,25 @@ export default async function Beranda() {
   //   );
   // }
 
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
-  const response = await fetch(`${apiUrl}/api/posts`, {
-    // Mematikan cache agar data selalu baru setiap kali halaman direfresh (mode development)
-    cache: "no-store",
-  });
+  let posts = [];
 
-  const responseData = await response.json();
-  const posts = responseData.data;
+  try{
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+    const response = await fetch(`${apiUrl}/api/posts`, {
+      // Mematikan cache agar data selalu baru setiap kali halaman direfresh (mode development)
+      cache: "no-store",
+    });
+
+    if (response.ok) {
+        const resData = await response.json();
+        posts = resData.data;
+      } else {
+        console.error("API merespons dengan status:", response.status);
+      }
+  } catch (error) {
+    // Jika Vercel gagal menghubungi server (misal karena masih localhost)
+    console.error("Gagal terhubung ke API Laravel:", error);
+  }
 
   // 3. Render HTML
   // return (
