@@ -24,19 +24,19 @@ export default async function Beranda() {
 
   let posts = [];
 
-  try{
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
     const response = await fetch(`${apiUrl}/api/posts`, {
       // Mematikan cache agar data selalu baru setiap kali halaman direfresh (mode development)
       cache: "no-store",
     });
 
     if (response.ok) {
-        const resData = await response.json();
-        posts = resData.data;
-      } else {
-        console.error("API merespons dengan status:", response.status);
-      }
+      const resData = await response.json();
+      posts = resData.data;
+    } else {
+      console.error("API merespons dengan status:", response.status);
+    }
   } catch (error) {
     // Jika Vercel gagal menghubungi server (misal karena masih localhost)
     console.error("Gagal terhubung ke API Laravel:", error);
@@ -75,7 +75,7 @@ export default async function Beranda() {
 
   return (
     <main className="max-w-4xl mx-auto p-8 font-sans">
-      <h1 className="text-4xl font-extrabold mb-10 tracking-tight text-gray-900">
+      <h1 className="font-heading text-4xl font-black mb-10 text-primary-900">
         Kabar Terbaru Komplek-eL
       </h1>
 
