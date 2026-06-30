@@ -1,7 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,7 +9,21 @@ export default function Navbar() {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cek apakah tombol Meta (Cmd di Mac) atau Ctrl (Windows) ditekan bersama huruf 'k'
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault(); // Mencegah peramban membuka kotak pencarian bawaannya (biasanya Ctrl+K di Chrome membuka pencarian URL)
+        searchInputRef.current?.focus(); // Paksa kursor masuk ke dalam input kita
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -243,6 +257,7 @@ export default function Navbar() {
                   />
                 </svg>
                 <input
+                  ref={searchInputRef}
                   type="text"
                   placeholder="Cari..."
                   className="bg-transparent border-none outline-none text-sm text-quinary-950 placeholder:text-quinary-800/50 w-24 focus:w-40 xl:w-32 xl:focus:w-48 px-2 transition-all duration-300"
@@ -283,24 +298,211 @@ export default function Navbar() {
             >
               {resolvedTheme === "dark" ? "☀️" : "🌙"}
             </button>
-            <button className="text-quinary-950">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-7 h-7"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-quinary-950 p-2"
+              aria-label="Toggle Mobile Menu"
+            >
+              {isMobileMenuOpen ? (
+                // Ikon Silang (X) saat menu terbuka
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-7 h-7"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                // Ikon Hamburger saat menu tertutup
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-7 h-7"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                  />
+                </svg>
+              )}
             </button>
           </div>
         </div>
+      </div>
+      <div
+        className={`lg:hidden absolute top-full left-0 w-full transition-all duration-300 bg-primary-50/80 backdrop-blur-2xl border-b border-primary-100 shadow-xl
+          ${
+            isMobileMenuOpen
+              ? "max-h-[80vh] py-6 opacity-100 overflow-y-auto"
+              : "max-h-0 py-0 opacity-0 overflow-hidden"
+          }`}
+      >
+        <div
+          className={`absolute inset-0 -z-10 transition-all duration-300 ${
+            isScrolled
+              ? "bg-primary-50/70 backdrop-blur-2xl border-b border-primary-100 shadow-sm"
+              : "bg-transparent"
+          }`}
+        />
+        <nav className="flex flex-col gap-4 px-6 font-medium text-quinary-800">
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="hover:text-primary transition-colors py-2 border-b border-primary-100/50"
+          >
+            Beranda
+          </Link>
+
+          <div className="py-2 border-b border-primary-100/50 flex flex-col gap-3">
+            <span className="text-quinary-950 font-semibold font-heading">
+              Profil
+            </span>
+            <Link
+              href="/profil/sejarah"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="pl-4 text-sm hover:text-primary transition-colors"
+            >
+              Sejarah dan Visi Misi
+            </Link>
+            <Link
+              href="/profil/struktur"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="pl-4 text-sm hover:text-primary transition-colors"
+            >
+              Struktur Kepengurusan
+            </Link>
+            <Link
+              href="/profil/redaksi"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="pl-4 text-sm hover:text-primary transition-colors"
+            >
+              Tim Redaksi
+            </Link>
+          </div>
+
+          <div className="py-2 border-b border-primary-100/50 flex flex-col gap-3">
+            <span className="text-quinary-950 font-semibold font-heading">
+              Artikel
+            </span>
+            <div className="grid grid-cols-2 gap-3 pl-4">
+              <Link
+                href="/artikel/opini"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm hover:text-primary transition-colors"
+              >
+                Opini
+              </Link>
+              <Link
+                href="/artikel/figur"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm hover:text-primary transition-colors"
+              >
+                Figur
+              </Link>
+              <Link
+                href="/artikel/kajian"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm hover:text-primary transition-colors"
+              >
+                Kajian Khusus
+              </Link>
+              <Link
+                href="/artikel/kalam"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm hover:text-primary transition-colors"
+              >
+                Kalam
+              </Link>
+              <Link
+                href="/artikel/resensi"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm hover:text-primary transition-colors"
+              >
+                Resensi
+              </Link>
+              <Link
+                href="/artikel/sastra"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-sm hover:text-primary transition-colors"
+              >
+                Sastra
+              </Link>
+            </div>
+          </div>
+
+          <div className="py-2 border-b border-primary-100/50 flex flex-col gap-3">
+            <span className="text-quinary-950 font-semibold font-heading">
+              Berita
+            </span>
+            <Link
+              href="/berita/kegiatan"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="pl-4 text-sm hover:text-primary transition-colors"
+            >
+              Kegiatan
+            </Link>
+            <Link
+              href="/berita/peringatan"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="pl-4 text-sm hover:text-primary transition-colors"
+            >
+              Peringatan
+            </Link>
+          </div>
+
+          <Link
+            href="/kontribusi"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="hover:text-primary transition-colors py-2"
+          >
+            Kontribusi
+          </Link>
+
+          <div className="group relative flex items-center bg-white/40 dark:bg-primary-100/10 backdrop-blur-md border border-primary-100 hover:border-primary-200 rounded-xl px-3 py-1.5 transition-all shadow-sm hover:shadow-md cursor-text">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4 text-quinary-800/70"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Cari..."
+              className="bg-transparent border-none outline-none text-sm text-quinary-950 placeholder:text-quinary-800/50 w-24 focus:w-40 xl:w-32 xl:focus:w-48 px-2 transition-all duration-300"
+            />
+            <kbd className="hidden xl:inline-flex items-center gap-0.5 bg-primary-100/50 border border-primary-200 rounded px-1.5 text-[10px] font-semibold text-quinary-700 ml-1">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </div>
+
+          {/* Tombol PSB untuk Mobile */}
+          <Link
+            href="/psb"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="mt-4 bg-primary text-white text-center px-5 py-3 rounded-xl font-semibold shadow-lg shadow-primary/40 hover:bg-primary-700 transition-all duration-200"
+          >
+            Daftar PSB
+          </Link>
+        </nav>
       </div>
     </header>
   );

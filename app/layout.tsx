@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Providers } from "@/components/providers";
 import localFont from "next/font/local";
+import Footer from "@/components/Footer";
 
 const sfDisplay = localFont({
   src: "./fonts/SF-Pro-Display.otf",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <main className="pt-20">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>
