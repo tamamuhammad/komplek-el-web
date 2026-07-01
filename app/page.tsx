@@ -1,3 +1,4 @@
+import Hero from "@/components/Hero";
 import { createClient } from "@/utils/supabase/server";
 
 // Perhatikan bahwa fungsi komponen ini sekarang menggunakan 'async'
@@ -74,42 +75,45 @@ export default async function Beranda() {
   // );
 
   return (
-    <main className="max-w-4xl mx-auto p-8 font-sans">
-      <h1 className="font-heading text-4xl font-black mb-10 text-primary-900">
-        Kabar Terbaru Komplek-eL
-      </h1>
+    <>
+      <Hero />
+      <main className="max-w-4xl mx-auto p-8 font-sans">
+        <h1 className="font-heading text-4xl font-black mb-10 text-primary-900">
+          Kabar Terbaru Komplek-eL
+        </h1>
 
-      <div className="grid gap-8">
-        {posts?.map((post: any) => (
-          <article
-            key={post.id}
-            className="group border border-gray-200 p-7 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 bg-white"
-          >
-            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3 block">
-              {post.category}
-            </span>
-            <h2 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
-              {post.title}
-            </h2>
-            <p className="text-gray-500 leading-relaxed line-clamp-3 mb-4">
-              {post.excerpt}
+        <div className="grid gap-8">
+          {posts?.map((post: any) => (
+            <article
+              key={post.id}
+              className="group border border-gray-200 p-7 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 bg-white"
+            >
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3 block">
+                {post.category}
+              </span>
+              <h2 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
+                {post.title}
+              </h2>
+              <p className="text-gray-500 leading-relaxed line-clamp-3 mb-4">
+                {post.excerpt}
+              </p>
+              <div className="text-sm text-gray-400 font-medium">
+                {new Date(post.published_at).toLocaleDateString("id-ID", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </div>
+            </article>
+          ))}
+
+          {posts?.length === 0 && (
+            <p className="text-gray-500 italic text-center py-10">
+              Belum ada artikel yang diterbitkan.
             </p>
-            <div className="text-sm text-gray-400 font-medium">
-              {new Date(post.published_at).toLocaleDateString("id-ID", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </div>
-          </article>
-        ))}
-
-        {posts?.length === 0 && (
-          <p className="text-gray-500 italic text-center py-10">
-            Belum ada artikel yang diterbitkan.
-          </p>
-        )}
-      </div>
-    </main>
+          )}
+        </div>
+      </main>
+    </>
   );
 }
