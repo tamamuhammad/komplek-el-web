@@ -5,20 +5,20 @@ export default function Hero() {
   return (
     <section className="relative bg-hero-mesh pt-10 pb-20 lg:pt-16 lg:pb-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-12 md:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-24 items-center justify-between">
           {/* KOLOM KIRI: Teks & Call to Action */}
           <div className="flex flex-col items-center md:items-start gap-2 lg:pr-8 z-10">
             {/* Badge kecil di atas judul */}
-            <div className="inline-flex w-max items-center px-3 py-1 rounded-full bg-primary-100/50 border border-primary-200 text-primary-700 text-xs font-bold tracking-wide uppercase">
+            <div className="inline-flex w-max items-center px-3 py-1 rounded-lg bg-primary-100/50 border border-primary-200 text-primary-700 text-xs font-bold tracking-wide">
               Selamat Datang Di Website Resmi
             </div>
 
             {/* Judul Utama (Menggunakan font-heading SF Rounded) */}
-            <h1 className="font-heading text-6xl lg:text-7xl xl:text-7xl font-extrabold text-quinary-950 leading-[1.1] tracking-tight">
-              Komplek-eL
+            <h1 className="font-heading text-5xl lg:text-7xl xl:text-7xl font-black font-stretch-ultra-expanded text-quinary-950 leading-[1.1]">
+              Komplek L
             </h1>
 
-            <p className="text-lg text-quinary-800 text-center md:text-left leading-tight max-w-lg mt-2">
+            <p className="text-sm lg:text-lg text-quinary-800 text-center md:text-left leading-tight max-w-lg mt-2">
               PP Al-Munawwir Komplek L bervisi membentuk pribadi santri yang
               beriman, bertakwa, berilmu, dan berakhlakul karimah.
             </p>
@@ -27,13 +27,14 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-4 mt-4">
               <Link
                 href="/psb"
-                className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-2xl font-semibold shadow-lg shadow-primary/30 transition-all hover:-translate-y-1"
+                className="flex gap-2 items-center bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold shadow-lg shadow-primary/30 transition-all hover:-translate-y-1 group"
               >
                 Daftar Sekarang
+                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" className="transition-transform  group-hover:translate-x-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
               </Link>
               <Link
                 href="/profil/sejarah"
-                className="px-8 py-4 rounded-2xl font-semibold text-quinary-900 bg-primary-100 hover:bg-primary-50 border border-primary-150 transition-all hover:-translate-y-1"
+                className="px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold text-quinary-900 bg-transparent hover:bg-primary-100 border border-primary-200 hover:border-primary transition-all hover:-translate-y-1"
               >
                 Kenali Kami
               </Link>

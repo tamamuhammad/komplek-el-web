@@ -301,9 +301,9 @@
       ),
       linear-gradient(
         168deg,
-        #04100c 0%,
+        var(--color-primary-50) 0%,
         #0a221a 42%,
-        var(--color-primary-50) 100%
+        #04100c 100%
       );
   }
 }
