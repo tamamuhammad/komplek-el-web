@@ -32,7 +32,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      if (window.scrollY > 60) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -49,10 +49,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-primary-50/60 backdrop-blur-md border-b border-primary-100 shadow-sm py-4"
-          : "bg-transparent py-6"
+          ? "bg-primary-50/60 backdrop-blur-md border-b border-primary-100 shadow-sm py-2 md:py-4 mx-4 mt-3 rounded-2xl w-[calc(100%-32px)]"
+          : "bg-transparent py-3 md:py-6 w-full"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -342,7 +342,7 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`lg:hidden absolute top-full left-0 w-full transition-all duration-300 bg-primary-50/80 backdrop-blur-2xl border-b border-primary-100 shadow-xl
+        className={`lg:hidden absolute top-full left-0 w-full mt-2 transition-all duration-300 bg-primary-50/80 backdrop-blur-2xl border-b border-primary-100 rounded-2xl shadow-xl
           ${
             isMobileMenuOpen
               ? "max-h-[80vh] py-6 opacity-100 overflow-y-auto"

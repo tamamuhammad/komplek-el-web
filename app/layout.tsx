@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <main className="pt-22">{children}</main>
+          <main className="pt-18 md:pt-22">{children}</main>
           <Footer />
         </Providers>
       </body>
