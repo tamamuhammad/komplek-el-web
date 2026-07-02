@@ -26,7 +26,7 @@ export default function Footer() {
                 width={240}
                 height={40}
                 priority
-                className="w-48"
+                className="w-48 h-auto"
               />
             </Link>
             <p className="text-quinary-800 text-sm leading-relaxed max-w-sm">

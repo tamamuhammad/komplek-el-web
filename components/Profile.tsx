@@ -6,10 +6,10 @@ export default function Profile() {
     <section className="py-24 relative bg-transparent transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-quinary-950 tracking-tight">
+          <h2 className="font-heading text-3xl md:text-5xl font-bold text-quinary-950 tracking-tight">
             Mengenal Lebih Dekat
           </h2>
-          <p className="mt-4 text-lg text-quinary-800">
+          <p className="mt-4 text-sm md:text-lg text-quinary-800">
             Fondasi dan arah gerak Komplek L dalam mencetak
             peradaban.
           </p>
@@ -20,15 +20,16 @@ export default function Profile() {
           {/* KOLOM 1 (Kiri): Gambar & Nilai Dasar */}
           <div className="lg:col-span-4 flex flex-col gap-4">
             {/* Gambar Image Card */}
-            <div className="aspect-4/3 h-full rounded-2xl overflow-hidden shadow-lg border-2 border-white dark:border-quinary-800 relative bg-primary-100 group">
+            <div className="aspect-4/3 h-full rounded-2xl overflow-hidden shadow-lg border-2 border-primary-100 relative bg-primary-100 group">
               <Image
                 src="/img/profile.png"
                 alt="Gedung Komplek-eL"
                 fill
+                sizes="(max-width: 768px) 33vw, 20vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-quinary-950/80 via-quinary-950/20 to-transparent pointer-events-none" />
-              <div className="absolute bottom-4 left-4 right-4 text-white z-10">
+              <div className="absolute inset-0 bg-linear-to-t from-quinary-800/60 via-quinary-800/20 to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-4 right-4 text-primary-50 z-10">
                 <p className="font-heading text-sm md:text-base leading-tight drop-shadow-md">
                   PP. Al-Munawwir Komplek L
                 </p>

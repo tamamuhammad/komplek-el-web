@@ -27,14 +27,14 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-4 mt-4">
               <Link
                 href="/psb"
-                className="flex gap-2 items-center bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold shadow-lg shadow-primary/30 transition-all hover:-translate-y-1 group"
+                className="flex gap-2 items-center bg-primary-500 hover:bg-primary-600 text-sm md:text-base text-white px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold shadow-lg shadow-primary/30 transition-all hover:-translate-y-1 group"
               >
                 Daftar Sekarang
                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 448 512" className="transition-transform  group-hover:translate-x-1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"></path></svg>
               </Link>
               <Link
                 href="/profil/sejarah"
-                className="px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold text-quinary-900 bg-transparent hover:bg-primary-100 border border-primary-200 hover:border-primary transition-all hover:-translate-y-1"
+                className="px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold text-sm md:text-base text-quinary-900 bg-transparent hover:bg-primary-100 border border-primary-200 hover:border-primary transition-all hover:-translate-y-1"
               >
                 Kenali Kami
               </Link>
@@ -50,6 +50,7 @@ export default function Hero() {
                 src="/img/hero-1.jpg"
                 alt="Santri Komplek-eL"
                 fill
+                sizes="(max-width: 768px) 33vw, 20vw"
                 className="object-cover"
                 priority
               />
@@ -64,6 +65,7 @@ export default function Hero() {
                   src="/img/hero-2.jpg"
                   alt="Background Dekorasi"
                   fill
+                  sizes="(max-width: 768px) 33vw, 20vw"
                   className="object-cover"
                 />
               </div>
@@ -78,6 +80,7 @@ export default function Hero() {
                   src="/img/hero-3.png"
                   alt="Logo Mengambang"
                   fill
+                  sizes="(max-width: 768px) 33vw, 20vw"
                   className="object-contain"
                 />
               </div>

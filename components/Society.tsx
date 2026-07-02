@@ -22,13 +22,14 @@ export default function Society() {
             <div
               key={index}
               // Efek Grayscale dan Opacity yang memudar jadi berwarna saat di-hover
-              className="relative w-28 h-12 md:w-48 md:h-24 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-out cursor-pointer group"
+              className="relative w-12 h-12 md:w-48 md:h-24 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-out cursor-pointer group"
               title={inst.name}
             >
               <Image
                 src={inst.logo}
                 alt={`Logo ${inst.name}`}
                 fill
+                sizes="(max-width: 768px) 33vw, 20vw"
                 className="object-contain group-hover:scale-105 transition-transform duration-500"
               />
             </div>
