@@ -116,7 +116,7 @@ export default function Schedule() {
               
               <div className="flex flex-wrap gap-2.5 relative z-10">
                 {fasilitas.map((item, i) => (
-                  <span key={i} className="text-xs font-semibold bg-primary-200/50 hover:bg-primary-300/50 transition-colors border border-primary-3  00/50 text-primary-950 px-4 py-2 rounded-full cursor-default">
+                  <span key={i} className="text-xs font-semibold bg-primary-200/50 hover:bg-primary-300/50 transition-colors border border-primary-300/50 text-primary-950 px-4 py-2 rounded-full cursor-default">
                     {item}
                   </span>
                 ))}
@@ -134,8 +134,8 @@ export default function Schedule() {
               <div className="space-y-4">
                 {kompetensiUbudiyah.map((item, i) => (
                   <div key={i} className="flex gap-4 border-b border-primary-50 dark:border-quinary-800/60 pb-4 last:border-0 last:pb-0">
-                    <div className="shrink-0 pt-0.5 min-w-32">
-                      <span className="inline-block text-[9px] font-black px-2.5 py-1 rounded-full mb-1.5 bg-primary-500 text-white uppercase tracking-wider shadow-sm">
+                    <div className="shrink-0 pt-0.5 min-w-26 md:min-w-32">
+                      <span className="inline-block text-[7px] md:text-[9px] font-black px-2.5 py-1 rounded-full mb-1.5 bg-primary-500 text-white uppercase tracking-wider shadow-sm">
                         {item.badge}
                       </span>
                     </div>

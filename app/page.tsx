@@ -3,6 +3,7 @@ import Profile from "@/components/Profile";
 import Program from "@/components/Program";
 import Schedule from "@/components/Schedule";
 import Society from "@/components/Society";
+import Testimonial from "@/components/Testimonial";
 import { createClient } from "@/utils/supabase/server";
 
 // Perhatikan bahwa fungsi komponen ini sekarang menggunakan 'async'
@@ -85,6 +86,7 @@ export default async function Beranda() {
       <Profile />
       <Program />
       <Schedule />
+      <Testimonial />
       <main className="max-w-4xl mx-auto p-8 font-sans">
         <h1 className="font-heading text-4xl font-black mb-10 text-primary-900">
           Kabar Terbaru Komplek-eL
