@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Profile from "@/components/Profile";
 import Program from "@/components/Program";
+import Schedule from "@/components/Schedule";
 import Society from "@/components/Society";
 import { createClient } from "@/utils/supabase/server";
 
@@ -83,6 +84,7 @@ export default async function Beranda() {
       <Society />
       <Profile />
       <Program />
+      <Schedule />
       <main className="max-w-4xl mx-auto p-8 font-sans">
         <h1 className="font-heading text-4xl font-black mb-10 text-primary-900">
           Kabar Terbaru Komplek-eL

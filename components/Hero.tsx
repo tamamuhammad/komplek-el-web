@@ -34,7 +34,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/profil/sejarah"
-                className="px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold text-sm md:text-base text-quinary-900 bg-transparent hover:bg-primary-100 border border-primary-200 hover:border-primary transition-all hover:-translate-y-1"
+                className="hidden md:block px-4 py-2 lg:px-8 lg:py-4 rounded-2xl font-semibold text-sm md:text-base text-quinary-900 bg-transparent hover:bg-primary-100 border border-primary-200 hover:border-primary transition-all hover:-translate-y-1"
               >
                 Kenali Kami
               </Link>
@@ -47,7 +47,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-linear-to-br from-secondary-200/40 to-transparent rounded-4xl overflow-hidden bg-primary-100 shadow-2xl">
               {/* Ganti src dengan gambar orang/santrimu nanti */}
               <Image
-                src="/img/hero-1.jpg"
+                src="/img/hero-1.JPG"
                 alt="Santri Komplek-eL"
                 fill
                 sizes="(max-width: 768px) 33vw, 20vw"
