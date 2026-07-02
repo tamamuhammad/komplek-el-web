@@ -1,3 +1,4 @@
+import FAQ from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Profile from "@/components/Profile";
 import Program from "@/components/Program";
@@ -87,6 +88,7 @@ export default async function Beranda() {
       <Program />
       <Schedule />
       <Testimonial />
+      <FAQ />
       <main className="max-w-4xl mx-auto p-8 font-sans">
         <h1 className="font-heading text-4xl font-black mb-10 text-primary-900">
           Kabar Terbaru Komplek-eL
